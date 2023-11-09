@@ -9,12 +9,12 @@ class AppStyles {
 
   /// Text styles
   static final mainNormal14 = TextStyle(
-    color: AppColors.mainColor,
+    color: AppColors.main,
     fontSize: getFontSize(d_14),
     fontWeight: FontWeight.normal,
   );
   static final mainBold14 = TextStyle(
-    color: AppColors.mainColor,
+    color: AppColors.main,
     fontSize: getFontSize(d_15),
     fontWeight: FontWeight.bold,
   );
@@ -190,9 +190,9 @@ class AppStyles {
   /// Set the status bar color to the widget
   static void setStatusBarTheme() {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: AppColors.mainColor, //top bar color
+      statusBarColor: AppColors.main, //top bar color
       statusBarIconBrightness: Brightness.light, //top bar icons
-      systemNavigationBarColor: AppColors.mainColor, //bottom bar color
+      systemNavigationBarColor: AppColors.main, //bottom bar color
       systemNavigationBarIconBrightness: Brightness.light, //bottom bar icons
     ));
   }
@@ -206,14 +206,14 @@ class AppStyles {
 
   static ThemeData getAppTheme() {
     return ThemeData(
-      primaryColor: AppColors.mainColor,
+      primaryColor: AppColors.main,
       pageTransitionsTheme: const PageTransitionsTheme(builders: {
         TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
         TargetPlatform.android: CupertinoPageTransitionsBuilder(),
       }),
       colorScheme:
           ColorScheme.fromSwatch(primarySwatch: AppColors.primarySwatch)
-              .copyWith(secondary: AppColors.mainColor),
+              .copyWith(secondary: AppColors.main),
     );
   }
 }

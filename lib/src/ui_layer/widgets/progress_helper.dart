@@ -17,7 +17,7 @@ class ProgressBar extends StatelessWidget {
         color: Color.fromRGBO(255, 255, 255, opacity),
         child: const Center(
           child: CircularProgressIndicator(
-            backgroundColor: AppColors.mainColor,
+            backgroundColor: AppColors.main,
             valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
           ),
         ),

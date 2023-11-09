@@ -39,7 +39,7 @@ class NetworkImageWidget extends StatelessWidget {
               alignment: Alignment.center,
               child: CircularProgressIndicator(
                 backgroundColor: Colors.white,
-                valueColor: const AlwaysStoppedAnimation<Color>(AppColors.mainColor),
+                valueColor: const AlwaysStoppedAnimation<Color>(AppColors.main),
                 value: event.expectedTotalBytes != null ? event.cumulativeBytesLoaded / event.expectedTotalBytes! : null,
               ),
             );

@@ -28,7 +28,7 @@ class CommonAppButton extends StatelessWidget {
           ),
 
           backgroundColor:
-              MaterialStateProperty.all<Color>(AppColors.mainColor),
+              MaterialStateProperty.all<Color>(AppColors.main),
         ),
         onPressed: onPressed,
         child: Center(

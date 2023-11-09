@@ -133,7 +133,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
 
   Widget _loadingWidget(BuildContext context) {
     return Container(
-      color: AppColors.mainColor,
+      color: AppColors.main,
       alignment: Alignment.center,
       child: const ProgressBar(),
     );

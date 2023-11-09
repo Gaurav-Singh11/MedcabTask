@@ -91,7 +91,7 @@ class CommonTextField extends StatelessWidget {
       controller: controller,
       scrollPhysics: const ClampingScrollPhysics(),
       style: AppStyles.mainNormal14,
-      cursorColor: AppColors.mainColor,
+      cursorColor: AppColors.main,
       textInputAction: textInputAction ?? TextInputAction.done,
       keyboardType: keyboardType,
       inputFormatters: inputFormatters,
@@ -116,7 +116,7 @@ class CommonTextField extends StatelessWidget {
   OutlineInputBorder _inputBorder() {
     return OutlineInputBorder(
       borderSide: const BorderSide(
-        color: AppColors.mainColor,
+        color: AppColors.main,
         width: 0.5,
       ),
       borderRadius: BorderRadius.all(
