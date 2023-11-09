@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medcab_task/src/business_layer/util/helper/device_info_helper.dart';
 import 'package:medcab_task/src/ui_layer/screens/book_manpower/book_manpower_screen.dart';
 import 'package:medcab_task/src/ui_layer/widgets/progress_helper.dart';
 import 'package:flutter/material.dart';
@@ -83,6 +85,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     AppStyles.setStatusBarTheme();
+    DeviceInfo.setDeviceInfo(context);
     return _mainApp(context);
   }
 
@@ -103,6 +106,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
             child: MaterialApp(
               navigatorKey: navigatorKey,
               builder: (BuildContext context, Widget? child) {
+                ScreenUtil.init(context, designSize: const Size(375, 812));
                 return MediaQuery(
                   data: MediaQuery.of(context).copyWith(textScaleFactor: d_1),
                   child: child!,

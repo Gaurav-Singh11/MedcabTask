@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medcab_task/src/data_layer/res/colors.dart';
 import 'package:medcab_task/src/data_layer/res/numbers.dart';
 
@@ -26,16 +27,16 @@ class AppStyles {
 
   /// Method used to get font size according to device
   static double getFontSize(double value) {
-    return value;
+    return value.sp;
   }
 
   /// Method used to get height according to device
   static double getHeight(double value) {
-    return value;
+    return value.h;
   }
 
   static double getScale(double value) {
-    return value;
+    return value.w;
   }
 
   /// Method used to get width according to device

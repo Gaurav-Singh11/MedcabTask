@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medcab_task/src/business_layer/util/helper/device_info_helper.dart';
 import 'package:medcab_task/src/business_layer/util/helper/flavor_configuration_helper.dart';
 import 'package:medcab_task/src/data_layer/local_db/hive_database_helper.dart';
@@ -17,6 +18,9 @@ Future<void> main() async {
 
   /// Sets Device info
   DeviceInfo.setDeviceId();
+
+  /// Ensuring Size of the phone in UI Design
+  await ScreenUtil.ensureScreenSize();
 
   /// Initialize Hive DB and register adapters and generate encryption key
   await HiveDatabaseHelper.instance.initializeHiveAndRegisterAdapters();
