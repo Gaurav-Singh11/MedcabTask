@@ -16,9 +16,8 @@ class _BookManpowerScreenState extends State<BookManpowerScreen> {
       body: SafeArea(
         child: Column(
           children: [
-
             Expanded(
-              child: _mainBodyWidget(),
+              child: _mainBodyWidget(context),
             ),
           ],
         ),
@@ -26,9 +25,7 @@ class _BookManpowerScreenState extends State<BookManpowerScreen> {
     );
   }
 
-  Widget _mainBodyWidget() {
-    return const Column(
-      children: [],
-    );
+  Widget _mainBodyWidget(BuildContext context) {
+    return const Column(children: []);
   }
 }
