@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medcab_task/src/data_layer/res/colors.dart';
+import 'package:medcab_task/src/data_layer/res/font_families.dart';
 import 'package:medcab_task/src/data_layer/res/numbers.dart';
 
 class AppStyles {
@@ -9,21 +10,69 @@ class AppStyles {
   AppStyles._privateConstructor();
 
   /// Text styles
-  static final mainNormal14 = TextStyle(
-    color: AppColors.main,
-    fontSize: getFontSize(d_14),
-    fontWeight: FontWeight.normal,
-  );
-  static final mainBold14 = TextStyle(
-    color: AppColors.main,
-    fontSize: getFontSize(d_15),
-    fontWeight: FontWeight.bold,
-  );
-  static final whiteLightBold20 = TextStyle(
-    color: Colors.white,
-    fontSize: getFontSize(d_20),
-    fontWeight: FontWeight.w700,
-  );
+  static subtitleStyle({
+    Color color = AppColors.black,
+    double fontSize = d_10,
+    double height = onePointFive,
+    TextDecoration? decoration = TextDecoration.none
+  }) {
+    return TextStyle(
+      fontSize: getFontSize(fontSize),
+      fontWeight: FontWeight.w400,
+      color: color,
+      height: height,
+      decoration: decoration,
+      fontFamily: FontFamilies.poppins,
+    );
+  }
+
+  static mediumTextStyle({
+    Color color = AppColors.black,
+    double fontSize = d_10,
+    double height = onePointFive,
+    TextDecoration? decoration = TextDecoration.none
+  }) {
+    return TextStyle(
+      fontSize: getFontSize(fontSize),
+      fontWeight: FontWeight.w500,
+      color: color,
+      height: height,
+      decoration: decoration,
+      fontFamily: FontFamilies.poppins,
+    );
+  }
+
+  static semiBoldSecondTextStyle({
+    Color color = AppColors.black,
+    double fontSize = d_10,
+    double height = onePointFive,
+    TextDecoration? decoration = TextDecoration.none
+  }) {
+    return TextStyle(
+      fontSize: getFontSize(fontSize),
+      fontWeight: FontWeight.w700,
+      color: color,
+      height: height,
+      decoration: decoration,
+      fontFamily: FontFamilies.poppins,
+    );
+  }
+
+  static semiBoldTextStyle({
+    Color color = AppColors.black,
+    double fontSize = d_10,
+    double height = onePointFive,
+    TextDecoration? decoration = TextDecoration.none
+  }) {
+    return TextStyle(
+      fontSize: getFontSize(fontSize),
+      fontWeight: FontWeight.w600,
+      color: color,
+      height: height,
+      decoration: decoration,
+      fontFamily: FontFamilies.poppins,
+    );
+  }
 
   /// Method used to get font size according to device
   static double getFontSize(double value) {
@@ -108,6 +157,7 @@ class AppStyles {
   static const EdgeInsets pdV10 = EdgeInsets.symmetric(vertical: d_10);
   static const EdgeInsets pdV12 = EdgeInsets.symmetric(vertical: d_12);
   static const EdgeInsets pdV6 = EdgeInsets.symmetric(vertical: d_6);
+  static const EdgeInsets pdL8 = EdgeInsets.only(left: d_8);
   static const EdgeInsets pdH12V6 =
       EdgeInsets.symmetric(vertical: d_6, horizontal: d_12);
   static const EdgeInsets pdH20V8 =

@@ -35,7 +35,7 @@ class CommonAppButton extends StatelessWidget {
           child: Text(
             title,
             textAlign: TextAlign.center,
-            style: AppStyles.whiteLightBold20,
+            style: AppStyles.semiBoldSecondTextStyle(color: AppColors.white),
           ),
         ),
       ),

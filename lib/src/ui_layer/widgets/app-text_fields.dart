@@ -90,7 +90,7 @@ class CommonTextField extends StatelessWidget {
       cursorRadius: const Radius.circular(d_10),
       controller: controller,
       scrollPhysics: const ClampingScrollPhysics(),
-      style: AppStyles.mainNormal14,
+      style: AppStyles.mediumTextStyle(color: AppColors.lightGray),
       cursorColor: AppColors.main,
       textInputAction: textInputAction ?? TextInputAction.done,
       keyboardType: keyboardType,
@@ -103,12 +103,17 @@ class CommonTextField extends StatelessWidget {
         filled: false,
         fillColor: Colors.white,
         hintText: hint,
-        hintStyle: AppStyles.mainNormal14,
+        prefixIconConstraints: const BoxConstraints(
+          maxWidth: 30,
+          minWidth: 30
+        ),
+        prefixIcon: prefixIcon,
+        hintStyle: AppStyles.mediumTextStyle(color: AppColors.lightGray),
         focusedBorder: _inputBorder(),
         enabledBorder: _inputBorder(),
         isDense: true,
         border: _inputBorder(),
-        contentPadding: AppStyles.pd20,
+        contentPadding: AppStyles.pd10,
       ),
     );
   }
@@ -116,7 +121,7 @@ class CommonTextField extends StatelessWidget {
   OutlineInputBorder _inputBorder() {
     return OutlineInputBorder(
       borderSide: const BorderSide(
-        color: AppColors.main,
+        color: AppColors.darkGray,
         width: 0.5,
       ),
       borderRadius: BorderRadius.all(

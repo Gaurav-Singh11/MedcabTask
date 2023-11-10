@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:medcab_task/src/business_layer/localization/app_localizations.dart';
 import 'package:medcab_task/src/data_layer/res/colors.dart';
+import 'package:medcab_task/src/data_layer/res/styles.dart';
+import 'package:medcab_task/src/ui_layer/screens/book_manpower/widgets/app_bar_widget.dart';
+import 'package:medcab_task/src/ui_layer/screens/book_manpower/widgets/hepato_protector_widget.dart';
+import 'package:medcab_task/src/ui_layer/widgets/app-text_fields.dart';
 
 class BookManpowerScreen extends StatefulWidget {
   const BookManpowerScreen({super.key});
@@ -9,6 +14,14 @@ class BookManpowerScreen extends StatefulWidget {
 }
 
 class _BookManpowerScreenState extends State<BookManpowerScreen> {
+  final _searchController = TextEditingController();
+
+  @override
+  void dispose() {
+    super.dispose();
+    _searchController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,6 +29,7 @@ class _BookManpowerScreenState extends State<BookManpowerScreen> {
       body: SafeArea(
         child: Column(
           children: [
+            const AppBarWidget(),
             Expanded(
               child: _mainBodyWidget(context),
             ),
@@ -26,6 +40,28 @@ class _BookManpowerScreenState extends State<BookManpowerScreen> {
   }
 
   Widget _mainBodyWidget(BuildContext context) {
-    return const Column(children: []);
+    return Column(
+      children: [
+        AppStyles.sbHeight15,
+        _searchManpowerWidget(context),
+        AppStyles.sbHeight20,
+        const HepatoProtectorWidget(),
+      ],
+    );
+  }
+
+  Widget _searchManpowerWidget(BuildContext context) {
+    return Padding(
+      padding: AppStyles.screenHorizontalPadding,
+      child: CommonTextField(
+        prefixIcon: const Icon(
+          Icons.search,
+          color: AppColors.lightGray,
+          size: 25,
+        ),
+        controller: _searchController,
+        hint: AppLocalizations.current.searchManpower,
+      ),
+    );
   }
 }
