@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medcab_task/src/business_layer/blocs/book_manpower/book_manpower_bloc.dart';
 import 'package:medcab_task/src/business_layer/blocs/book_manpower/book_manpower_state.dart';
+import 'package:medcab_task/src/data_layer/res/colors.dart';
 import 'package:medcab_task/src/data_layer/res/images.dart';
 import 'package:medcab_task/src/data_layer/res/styles.dart';
 import 'package:medcab_task/src/ui_layer/widgets/asset_image_widget.dart';
@@ -72,12 +73,12 @@ class _HepatoProtectorWidgetState extends State<HepatoProtectorWidget> {
               builder: (context, state) {
                 if (state is HepatoProtectorPageState) {
                   return Container(
-                    width: 8.0,
-                    height: 8.0,
-                    margin: const EdgeInsets.symmetric(horizontal: 6.0),
+                    width: AppStyles.getHeight(20),
+                    height: AppStyles.getWidth(20),
+                    margin: AppStyles.pdH5,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: state.page == index ? Colors.blue : Colors.grey,
+                      color: state.page == index ? AppColors.blueGrey: AppColors.white,
                     ),
                   );
                 } else {

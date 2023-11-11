@@ -134,6 +134,7 @@ class AppStyles {
   static EdgeInsets pdL30 = const EdgeInsets.only(left: d_30);
 
   static const EdgeInsets pdH4 = EdgeInsets.symmetric(horizontal: d_4);
+  static const EdgeInsets pdH5 = EdgeInsets.symmetric(horizontal: d_5);
   static const EdgeInsets pdH8 = EdgeInsets.symmetric(horizontal: d_8);
   static const EdgeInsets pdH10 = EdgeInsets.symmetric(horizontal: d_10);
   static const EdgeInsets pdH13 = EdgeInsets.symmetric(horizontal: d_13);
@@ -241,10 +242,10 @@ class AppStyles {
   /// Set the status bar color to the widget
   static void setStatusBarTheme() {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: AppColors.main, //top bar color
-      statusBarIconBrightness: Brightness.light, //top bar icons
-      systemNavigationBarColor: AppColors.main, //bottom bar color
-      systemNavigationBarIconBrightness: Brightness.light, //bottom bar icons
+      statusBarColor: AppColors.white, //top bar color
+      statusBarIconBrightness: Brightness.dark, //top bar icons
+      systemNavigationBarColor: AppColors.white, //bottom bar color
+      systemNavigationBarIconBrightness: Brightness.dark, //bottom bar icons
     ));
   }
 
