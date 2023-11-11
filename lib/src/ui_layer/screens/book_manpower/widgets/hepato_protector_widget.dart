@@ -1,5 +1,8 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:medcab_task/src/data_layer/res/images.dart';
+import 'package:medcab_task/src/data_layer/res/styles.dart';
+import 'package:medcab_task/src/ui_layer/widgets/asset_image_widget.dart';
 
 class HepatoProtectorWidget extends StatefulWidget {
   const HepatoProtectorWidget({super.key});
@@ -13,35 +16,36 @@ class _HepatoProtectorWidgetState extends State<HepatoProtectorWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return  Column(
+    return Column(
       children: [
-        Expanded(
-          child: PageView.builder(
-            itemCount: AppImages.hepatoProtectorImages.length,
-            controller: PageController(viewportFraction: 0.8),
-            onPageChanged: (index) {
-              setState(() {
-                currentPage = index;
-              });
-            },
-            itemBuilder: (BuildContext context, int index) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10.0),
-                    color: Colors.amber,
+        CarouselSlider(
+          items: AppImages.hepatoProtectorImages.map((image) {
+            return Builder(
+              builder: (BuildContext context) {
+                return Padding(
+                  padding: AppStyles.pdH10,
+                  child: AssetImageWidget(
+                    name: image,
+                    fit: BoxFit.contain,
                   ),
-                  child: Image.network(
-                    AppImages.hepatoProtectorImages[index],
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              );
-            },
+                );
+              },
+            );
+          }).toList(),
+          options: CarouselOptions(
+            scrollPhysics: const PageScrollPhysics(),
+            // reverse: true,
+            // autoPlay: true,
+            autoPlayInterval: const Duration(seconds: 3),
+            autoPlayAnimationDuration: const Duration(milliseconds: 500),
+            autoPlayCurve: Curves.fastOutSlowIn,
+            enlargeCenterPage: false,
+            // enlargeFactor: 0.5,
+            // viewportFraction: 0.99,
+            clipBehavior: Clip.none,
+            scrollDirection: Axis.horizontal,
           ),
         ),
-        const SizedBox(height: 10.0),
         _buildDots(),
       ],
     );
@@ -50,6 +54,7 @@ class _HepatoProtectorWidgetState extends State<HepatoProtectorWidget> {
   Widget _buildDots() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: List.generate(AppImages.hepatoProtectorImages.length, (index) {
         return Container(
           width: 8.0,

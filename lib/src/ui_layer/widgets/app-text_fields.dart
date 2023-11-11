@@ -37,7 +37,7 @@ class CommonTextField extends StatelessWidget {
     this.minLines = 1,
     this.toolBarOptions = true,
     this.shouldShowBorder = false,
-    this.autofocus = true,
+    this.autofocus = false,
     this.textAlign = TextAlign.start,
   });
 
