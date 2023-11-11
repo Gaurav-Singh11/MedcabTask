@@ -17,7 +17,7 @@ class AppColors {
   static const separator = Color.fromRGBO(196, 196, 196, 1);
   static const disabled = Color.fromRGBO(248, 115, 105, 0.4);
   static const nonSelected = Color.fromRGBO(255, 238, 230, 1);
-  static const lightGrayBackground = Color.fromRGBO(233, 233, 233, 1);
+  static const lightGray2 = Color.fromRGBO(233, 233, 233, 1);
   static const lightOrange = Color.fromRGBO(255, 206, 178, 1);
   static const lightPink = Color.fromRGBO(254, 216, 255, 1);
   static const lightBlue = Color.fromRGBO(169, 224, 255, 1);

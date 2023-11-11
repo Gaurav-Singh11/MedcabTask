@@ -9,6 +9,7 @@ import 'package:medcab_task/src/ui_layer/screens/book_manpower/widgets/app_bar_w
 import 'package:medcab_task/src/ui_layer/screens/book_manpower/widgets/divider_widget.dart';
 import 'package:medcab_task/src/ui_layer/screens/book_manpower/widgets/headline_widget.dart';
 import 'package:medcab_task/src/ui_layer/screens/book_manpower/widgets/hepato_protector_widget.dart';
+import 'package:medcab_task/src/ui_layer/screens/book_manpower/widgets/manpower_by_category_widget.dart';
 import 'package:medcab_task/src/ui_layer/widgets/app-text_fields.dart';
 
 class BookManpowerScreen extends StatefulWidget {
@@ -51,23 +52,27 @@ class _BookManpowerScreenState extends State<BookManpowerScreen> {
   }
 
   Widget _mainBodyWidget(BuildContext context) {
-    return Column(
-      children: [
-        AppStyles.sbHeight15,
-        _searchManpowerWidget(context),
-        AppStyles.sbHeight20,
-        const HepatoProtectorWidget(),
-        AppStyles.sbHeight15,
-        const HorizontalDividerWidget(),
-        const ActionsRowWidget(),
-        const HorizontalDividerWidget(),
-        AppStyles.sbHeight10,
-        HeadlineWidget(
-          title: AppLocalizations.current.bookManpowerByCategory,
-          shouldShowViewAll: true,
-        ),
-
-      ],
+    return SingleChildScrollView(
+      physics: const ClampingScrollPhysics(),
+      child: Column(
+        children: [
+          AppStyles.sbHeight15,
+          _searchManpowerWidget(context),
+          AppStyles.sbHeight20,
+          const HepatoProtectorWidget(),
+          AppStyles.sbHeight15,
+          const HorizontalDividerWidget(),
+          const ActionsRowWidget(),
+          const HorizontalDividerWidget(),
+          AppStyles.sbHeight10,
+          HeadlineWidget(
+            title: AppLocalizations.current.bookManpowerByCategory,
+            shouldShowViewAll: true,
+          ),
+          AppStyles.sbHeight15,
+          const ManPowerByCategoryWidget(),
+        ],
+      ),
     );
   }
 

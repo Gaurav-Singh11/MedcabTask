@@ -9,6 +9,17 @@ class AppStyles {
   /// Private constructor to prevent class instantiation
   AppStyles._privateConstructor();
 
+  /// Box Decorations
+  static BoxDecoration appBoxDecoration({Color color = Colors.transparent, Color? borderColor, double radius = d_10}) {
+    return BoxDecoration(
+      color: color,
+      border: Border.all(
+        width: d_1,
+        color: borderColor ?? color,
+      ),
+      borderRadius:  BorderRadius.all(Radius.circular(radius)),
+    );
+  }
   /// Text styles
   static subtitleStyle({
     Color color = AppColors.black,
