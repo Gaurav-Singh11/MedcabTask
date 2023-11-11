@@ -3,7 +3,7 @@ class AppImages {
 
   // static const hepatoProtector = "assets/images/hepato_protector.png";
 
-  static const hepatoProtectorImages = [
+  static const hepatoProtectors = [
     "assets/images/hepato_protector.png",
     "assets/images/hepato_protector.png",
     "assets/images/hepato_protector.png",
