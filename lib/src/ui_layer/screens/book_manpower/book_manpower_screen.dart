@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:medcab_task/src/business_layer/blocs/book_manpower/book_manpower_bloc.dart';
 import 'package:medcab_task/src/business_layer/localization/app_localizations.dart';
 import 'package:medcab_task/src/data_layer/res/colors.dart';
 import 'package:medcab_task/src/data_layer/res/styles.dart';
@@ -15,6 +17,12 @@ class BookManpowerScreen extends StatefulWidget {
 
 class _BookManpowerScreenState extends State<BookManpowerScreen> {
   final _searchController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    context.read<BookManpowerBloc>().updateHepatoProtectorPage(0);
+  }
 
   @override
   void dispose() {

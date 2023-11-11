@@ -1,5 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:medcab_task/src/business_layer/blocs/book_manpower/book_manpower_bloc.dart';
+import 'package:medcab_task/src/business_layer/blocs/book_manpower/book_manpower_state.dart';
 import 'package:medcab_task/src/data_layer/res/images.dart';
 import 'package:medcab_task/src/data_layer/res/styles.dart';
 import 'package:medcab_task/src/ui_layer/widgets/asset_image_widget.dart';
@@ -12,7 +15,6 @@ class HepatoProtectorWidget extends StatefulWidget {
 }
 
 class _HepatoProtectorWidgetState extends State<HepatoProtectorWidget> {
-  int _currentPage = 0;
 
   @override
   void setState(VoidCallback fn) {
@@ -27,11 +29,9 @@ class _HepatoProtectorWidgetState extends State<HepatoProtectorWidget> {
       children: [
         CarouselSlider.builder(
           itemCount: AppImages.hepatoProtectors.length,
-          itemBuilder: (context, index, page) => Padding(
-            padding: AppStyles.pdH20,
-            child: AnimatedOpacity(
-              duration: const Duration(milliseconds: 300),
-              opacity: 1,
+          itemBuilder: (context, index, page) {
+            return Padding(
+              padding: AppStyles.pdH20,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: AssetImageWidget(
@@ -39,8 +39,8 @@ class _HepatoProtectorWidgetState extends State<HepatoProtectorWidget> {
                   name: AppImages.hepatoProtectors[index],
                 ),
               ),
-            ),
-          ),
+            );
+          },
           options: CarouselOptions(
             disableCenter: true,
             viewportFraction: 1,
@@ -49,7 +49,7 @@ class _HepatoProtectorWidgetState extends State<HepatoProtectorWidget> {
             reverse: false,
             autoPlayCurve: Curves.easeInOut,
             onPageChanged: (index, reason) {
-              setState(() => _currentPage = index);
+              context.read<BookManpowerBloc>().updateHepatoProtectorPage(index);
             },
           ),
         ),
@@ -68,15 +68,23 @@ class _HepatoProtectorWidgetState extends State<HepatoProtectorWidget> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: List.generate(
           AppImages.hepatoProtectors.length,
-          (index) {
-            return Container(
-              width: 8.0,
-              height: 8.0,
-              margin: const EdgeInsets.symmetric(horizontal: 6.0),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: _currentPage == index ? Colors.blue : Colors.grey,
-              ),
+              (index) {
+            return BlocBuilder<BookManpowerBloc, BookManpowerState>(
+              builder: (context, state) {
+                if(state is HepatoProtectorPageState){
+                  return Container(
+                    width: 8.0,
+                    height: 8.0,
+                    margin: const EdgeInsets.symmetric(horizontal: 6.0),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: state.page == index ? Colors.blue : Colors.grey,
+                    ),
+                  );
+                } else {
+                  return Container();
+                }
+              },
             );
           },
         ),
