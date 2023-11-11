@@ -4,7 +4,10 @@ import 'package:medcab_task/src/business_layer/blocs/book_manpower/book_manpower
 import 'package:medcab_task/src/business_layer/localization/app_localizations.dart';
 import 'package:medcab_task/src/data_layer/res/colors.dart';
 import 'package:medcab_task/src/data_layer/res/styles.dart';
+import 'package:medcab_task/src/ui_layer/screens/book_manpower/widgets/actions_row_widget.dart';
 import 'package:medcab_task/src/ui_layer/screens/book_manpower/widgets/app_bar_widget.dart';
+import 'package:medcab_task/src/ui_layer/screens/book_manpower/widgets/divider_widget.dart';
+import 'package:medcab_task/src/ui_layer/screens/book_manpower/widgets/headline_widget.dart';
 import 'package:medcab_task/src/ui_layer/screens/book_manpower/widgets/hepato_protector_widget.dart';
 import 'package:medcab_task/src/ui_layer/widgets/app-text_fields.dart';
 
@@ -54,6 +57,16 @@ class _BookManpowerScreenState extends State<BookManpowerScreen> {
         _searchManpowerWidget(context),
         AppStyles.sbHeight20,
         const HepatoProtectorWidget(),
+        AppStyles.sbHeight15,
+        const HorizontalDividerWidget(),
+        const ActionsRowWidget(),
+        const HorizontalDividerWidget(),
+        AppStyles.sbHeight10,
+        HeadlineWidget(
+          title: AppLocalizations.current.bookManpowerByCategory,
+          shouldShowViewAll: true,
+        ),
+
       ],
     );
   }

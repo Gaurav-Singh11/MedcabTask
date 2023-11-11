@@ -8,20 +8,8 @@ import 'package:medcab_task/src/data_layer/res/images.dart';
 import 'package:medcab_task/src/data_layer/res/styles.dart';
 import 'package:medcab_task/src/ui_layer/widgets/asset_image_widget.dart';
 
-class HepatoProtectorWidget extends StatefulWidget {
+class HepatoProtectorWidget extends StatelessWidget {
   const HepatoProtectorWidget({super.key});
-
-  @override
-  State<HepatoProtectorWidget> createState() => _HepatoProtectorWidgetState();
-}
-
-class _HepatoProtectorWidgetState extends State<HepatoProtectorWidget> {
-  @override
-  void setState(VoidCallback fn) {
-    if (mounted) {
-      super.setState(fn);
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +48,7 @@ class _HepatoProtectorWidgetState extends State<HepatoProtectorWidget> {
 
   Widget _buildDots() {
     return Positioned(
-      bottom: 15,
+      bottom: 10,
       left: 0,
       right: 0,
       child: Row(
@@ -73,12 +61,14 @@ class _HepatoProtectorWidgetState extends State<HepatoProtectorWidget> {
               builder: (context, state) {
                 if (state is HepatoProtectorPageState) {
                   return Container(
-                    width: AppStyles.getHeight(20),
-                    height: AppStyles.getWidth(20),
+                    width: AppStyles.getHeight(10),
+                    height: AppStyles.getWidth(10),
                     margin: AppStyles.pdH5,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: state.page == index ? AppColors.blueGrey: AppColors.white,
+                      color: state.page == index
+                          ? AppColors.blueGrey
+                          : AppColors.white,
                     ),
                   );
                 } else {
