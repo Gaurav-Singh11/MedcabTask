@@ -15,7 +15,6 @@ class HepatoProtectorWidget extends StatefulWidget {
 }
 
 class _HepatoProtectorWidgetState extends State<HepatoProtectorWidget> {
-
   @override
   void setState(VoidCallback fn) {
     if (mounted) {
@@ -68,10 +67,10 @@ class _HepatoProtectorWidgetState extends State<HepatoProtectorWidget> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: List.generate(
           AppImages.hepatoProtectors.length,
-              (index) {
+          (index) {
             return BlocBuilder<BookManpowerBloc, BookManpowerState>(
               builder: (context, state) {
-                if(state is HepatoProtectorPageState){
+                if (state is HepatoProtectorPageState) {
                   return Container(
                     width: 8.0,
                     height: 8.0,
@@ -82,7 +81,7 @@ class _HepatoProtectorWidgetState extends State<HepatoProtectorWidget> {
                     ),
                   );
                 } else {
-                  return Container();
+                  return const SizedBox.shrink();
                 }
               },
             );
