@@ -1,9 +1,6 @@
-import 'dart:convert';
 import 'dart:ui';
 
-import 'package:medcab_task/src/business_layer/util/helper/log_helper.dart';
 import 'package:medcab_task/src/data_layer/local_db/hive_database_helper.dart';
-import 'package:medcab_task/src/data_layer/models/response_models/login_response_model.dart';
 import 'package:medcab_task/src/data_layer/res/strings.dart';
 import 'package:hive/hive.dart';
 
@@ -71,27 +68,6 @@ class UserStateHiveHelper {
     box.delete(UserStateKeys.loggedIn);
     box.delete(UserStateKeys.userData);
     box.clear();
-  }
-
-  /// Method used to set the user response data in the box [Boxes.userBox].
-  Future<void> setUserResponse(UserResponse userResponse) async {
-    final Box<dynamic> box = await _openHiveBox();
-    box.put(UserStateKeys.userData, jsonEncode(userResponse.toJson()));
-  }
-
-  /// Method used to retrieve the user response data from the box [Boxes.userBox].
-  Future<UserResponse?> getUserResponse() async {
-    UserResponse? userObj;
-    try{
-      final Box<dynamic> box = await _openHiveBox();
-      final user = box.get(UserStateKeys.userData);
-      Map<String, dynamic>? userMap = jsonDecode(user.toString()) as Map<String, dynamic>?;
-      LogHelper.logData(userMap);
-      userObj = UserResponse.fromJson(userMap);
-    } catch (e){
-      LogHelper.logData("Error while fetching user data from cache ====> $e");
-    }
-    return userObj;
   }
 
   /// Method used to set the user's preferred locale inside
