@@ -59,14 +59,7 @@ class _BookManpowerScreenState extends State<BookManpowerScreen> {
       backgroundColor: AppColors.white,
       body: SafeArea(
         bottom: false,
-        child: Column(
-          children: [
-            const AppBarWidget(),
-            Expanded(
-              child: _mainBodyWidget(context),
-            ),
-          ],
-        ),
+        child: _mainBodyWidget(context),
       ),
     );
   }
@@ -76,6 +69,7 @@ class _BookManpowerScreenState extends State<BookManpowerScreen> {
       physics: const ClampingScrollPhysics(),
       child: Column(
         children: [
+          const AppBarWidget(),
           AppStyles.sbHeight15,
           _searchManpowerWidget(context),
           AppStyles.sbHeight20,
