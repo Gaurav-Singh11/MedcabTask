@@ -17,7 +17,7 @@ class ToastHelper {
       gravity: ToastGravity.BOTTOM,
       timeInSecForIosWeb: i_2,
       fontSize: d_15,
-      backgroundColor: error ?Colors.red : Colors.green,
+      backgroundColor: error ? Colors.red : Colors.green,
       textColor: Colors.white,
     );
   }
