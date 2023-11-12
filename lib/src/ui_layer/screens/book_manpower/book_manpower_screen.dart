@@ -13,6 +13,7 @@ import 'package:medcab_task/src/ui_layer/screens/book_manpower/widgets/healthcar
 import 'package:medcab_task/src/ui_layer/screens/book_manpower/widgets/hepato_protector_widget.dart';
 import 'package:medcab_task/src/ui_layer/screens/book_manpower/widgets/manpower_by_category_widget.dart';
 import 'package:medcab_task/src/ui_layer/screens/book_manpower/widgets/popular_categories_widget.dart';
+import 'package:medcab_task/src/ui_layer/screens/book_manpower/widgets/process_of_manpower_booking_widget.dart';
 import 'package:medcab_task/src/ui_layer/screens/book_manpower/widgets/top_rated_manpower_widget.dart';
 import 'package:medcab_task/src/ui_layer/widgets/app-text_fields.dart';
 
@@ -94,6 +95,13 @@ class _BookManpowerScreenState extends State<BookManpowerScreen> {
           const HealthCardBenefitCarouselWidget(),
           AppStyles.sbHeight15,
           const HorizontalDividerWidget(),
+          AppStyles.sbHeight15,
+          HeadlineWidget(title: AppLocalizations.current.processOfManpowerBooking),
+          AppStyles.sbHeight15,
+          const ProcessOfManpowerBookingWidget(),
+          AppStyles.sbHeight15,
+          AppStyles.sbHeight15,
+          AppStyles.sbHeight15,
           AppStyles.sbHeight30,
         ],
       ),
