@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medcab_task/src/business_layer/blocs/book_manpower/book_manpower_bloc.dart';
 import 'package:medcab_task/src/business_layer/localization/app_localizations.dart';
 import 'package:medcab_task/src/data_layer/res/colors.dart';
@@ -27,18 +26,28 @@ class BookManpowerScreen extends StatefulWidget {
 
 class _BookManpowerScreenState extends State<BookManpowerScreen> {
   final _searchController = TextEditingController();
+  BookManpowerBloc? _hepatoProtectorBloc;
+  BookManpowerBloc? _faqsBloc;
+  BookManpowerBloc? _healthCardBenefitBloc;
 
   @override
   void initState() {
     super.initState();
-    context.read<BookManpowerBloc>().updateHepatoProtectorPage(0);
-    context.read<BookManpowerBloc>().updateFaqsExpandedIndex(-1);
+    _faqsBloc = BookManpowerBloc();
+    _faqsBloc?.updateFaqsExpandedIndex(-1);
+    _healthCardBenefitBloc = BookManpowerBloc();
+    _healthCardBenefitBloc?.updateHealthCardBenefitPage(0);
+    _hepatoProtectorBloc = BookManpowerBloc();
+    _hepatoProtectorBloc?.updateHepatoProtectorPage(0);
   }
 
   @override
   void dispose() {
-    super.dispose();
     _searchController.dispose();
+    _healthCardBenefitBloc = null;
+    _faqsBloc = null;
+    _hepatoProtectorBloc = null;
+    super.dispose();
   }
 
   @override
@@ -67,7 +76,7 @@ class _BookManpowerScreenState extends State<BookManpowerScreen> {
           AppStyles.sbHeight15,
           _searchManpowerWidget(context),
           AppStyles.sbHeight20,
-          const HepatoProtectorWidget(),
+          HepatoProtectorWidget(bloc: _hepatoProtectorBloc),
           AppStyles.sbHeight15,
           const HorizontalDividerWidget(),
           const ActionsRowWidget(),
@@ -94,7 +103,7 @@ class _BookManpowerScreenState extends State<BookManpowerScreen> {
           AppStyles.sbHeight15,
           const HorizontalDividerWidget(height: d_8),
           AppStyles.sbHeight15,
-          const HealthCardBenefitCarouselWidget(),
+          HealthCardBenefitCarouselWidget(bloc: _healthCardBenefitBloc),
           AppStyles.sbHeight15,
           const HorizontalDividerWidget(),
           AppStyles.sbHeight15,
@@ -106,7 +115,7 @@ class _BookManpowerScreenState extends State<BookManpowerScreen> {
           AppStyles.sbHeight20,
           HeadlineWidget(title: AppLocalizations.current.faqs),
           AppStyles.sbHeight20,
-          const FrequentlyAskedQuestionsWidget(),
+          FrequentlyAskedQuestionsWidget(bloc: _faqsBloc),
           AppStyles.sbHeight30,
         ],
       ),

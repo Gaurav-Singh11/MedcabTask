@@ -49,7 +49,8 @@ class HealthCardBenefitWidget extends StatelessWidget {
 }
 
 class HealthCardBenefitCarouselWidget extends StatelessWidget {
-  const HealthCardBenefitCarouselWidget({super.key});
+  final BookManpowerBloc? bloc;
+  const HealthCardBenefitCarouselWidget({super.key, this.bloc});
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +81,7 @@ class HealthCardBenefitCarouselWidget extends StatelessWidget {
               reverse: false,
               autoPlayCurve: Curves.easeInOut,
               onPageChanged: (index, reason) {
-                context.read<BookManpowerBloc>().updateHepatoProtectorPage(index);
+                bloc?.updateHealthCardBenefitPage(index);
               },
             ),
           ),
@@ -99,8 +100,9 @@ class HealthCardBenefitCarouselWidget extends StatelessWidget {
         AppImages.hepatoProtectors.length,
             (index) {
           return BlocBuilder<BookManpowerBloc, BookManpowerState>(
+            bloc: bloc,
             builder: (context, state) {
-              if (state is HepatoProtectorPageState) {
+              if (state is HealthCardBenefitPageState) {
                 return Container(
                   width: AppStyles.getHeight(10),
                   height: AppStyles.getWidth(10),

@@ -19,11 +19,15 @@ class BookManpowerBloc extends Cubit<BookManpowerState> {
     AppLocalizations.current.getReportsFaq,
   ];
 
-  Future<void> updateHepatoProtectorPage(int currentPage) async {
+  void updateHepatoProtectorPage(int currentPage) async {
     emit(HepatoProtectorPageState(page: currentPage));
   }
 
-  Future<void> updateFaqsExpandedIndex(int currentIndex) async {
+  void updateHealthCardBenefitPage(int currentPage) async {
+    emit(HealthCardBenefitPageState(page: currentPage));
+  }
+
+  void updateFaqsExpandedIndex(int currentIndex) async {
     emit(FaqsExpandedState(index: currentIndex));
   }
 }

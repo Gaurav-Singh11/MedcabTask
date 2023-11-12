@@ -9,7 +9,8 @@ import 'package:medcab_task/src/data_layer/res/styles.dart';
 import 'package:medcab_task/src/ui_layer/widgets/asset_image_widget.dart';
 
 class HepatoProtectorWidget extends StatelessWidget {
-  const HepatoProtectorWidget({super.key});
+  final BookManpowerBloc? bloc;
+  const HepatoProtectorWidget({super.key, required this.bloc});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +38,7 @@ class HepatoProtectorWidget extends StatelessWidget {
             reverse: false,
             autoPlayCurve: Curves.easeInOut,
             onPageChanged: (index, reason) {
-              context.read<BookManpowerBloc>().updateHepatoProtectorPage(index);
+              bloc?.updateHepatoProtectorPage(index);
             },
           ),
         ),
@@ -58,6 +59,7 @@ class HepatoProtectorWidget extends StatelessWidget {
           AppImages.hepatoProtectors.length,
           (index) {
             return BlocBuilder<BookManpowerBloc, BookManpowerState>(
+              bloc: bloc,
               builder: (context, state) {
                 if (state is HepatoProtectorPageState) {
                   return Container(

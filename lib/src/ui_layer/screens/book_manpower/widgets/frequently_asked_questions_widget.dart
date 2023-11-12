@@ -7,51 +7,30 @@ import 'package:medcab_task/src/data_layer/res/numbers.dart';
 import 'package:medcab_task/src/data_layer/res/styles.dart';
 import 'package:medcab_task/src/ui_layer/widgets/app_text_widgets.dart';
 
-class FrequentlyAskedQuestionsWidget extends StatefulWidget {
-  const FrequentlyAskedQuestionsWidget({super.key});
-
-  @override
-  State<FrequentlyAskedQuestionsWidget> createState() =>
-      _FrequentlyAskedQuestionsWidgetState();
-}
-
-class _FrequentlyAskedQuestionsWidgetState
-    extends State<FrequentlyAskedQuestionsWidget> {
-  BookManpowerBloc? _bloc;
-
-  @override
-  void initState() {
-    super.initState();
-    _bloc = BookManpowerBloc();
-    _bloc?.updateFaqsExpandedIndex(-1);
-  }
-
-  @override
-  void dispose() {
-    _bloc = null;
-    super.dispose();
-  }
+class FrequentlyAskedQuestionsWidget extends StatelessWidget {
+  final  BookManpowerBloc? bloc;
+  const FrequentlyAskedQuestionsWidget({super.key, this.bloc});
 
   @override
   Widget build(BuildContext context) {
-    if (_bloc == null) return const SizedBox.shrink();
+    if (bloc == null) return const SizedBox.shrink();
     return ListView.separated(
       padding: AppStyles.screenHorizontalPadding,
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
-        return _faqs(_bloc!.faqs[index], index);
+        return _faqs(bloc!.faqs[index], index);
       },
       separatorBuilder: (context, index) {
         return const Divider(height: 2, thickness: 1);
       },
-      itemCount: _bloc!.faqs.length,
+      itemCount: bloc!.faqs.length,
     );
   }
 
   Widget _faqs(String title, int index) {
     return BlocBuilder<BookManpowerBloc, BookManpowerState>(
-      bloc: _bloc,
+      bloc: bloc,
       builder: (context, state) {
         if (state is FaqsExpandedState) {
           return Column(
@@ -98,9 +77,9 @@ class _FrequentlyAskedQuestionsWidgetState
 
   void _handleTap(FaqsExpandedState state, int index) {
     if (state.index == index) {
-      _bloc?.updateFaqsExpandedIndex(-1);
+      bloc?.updateFaqsExpandedIndex(-1);
     } else {
-      _bloc?.updateFaqsExpandedIndex(index);
+      bloc?.updateFaqsExpandedIndex(index);
     }
   }
 }
