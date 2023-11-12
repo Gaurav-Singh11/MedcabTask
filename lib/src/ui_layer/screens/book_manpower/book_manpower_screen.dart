@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:medcab_task/src/business_layer/blocs/book_manpower/book_manpower_bloc.dart';
 import 'package:medcab_task/src/business_layer/localization/app_localizations.dart';
 import 'package:medcab_task/src/data_layer/res/colors.dart';
+import 'package:medcab_task/src/data_layer/res/images.dart';
 import 'package:medcab_task/src/data_layer/res/numbers.dart';
 import 'package:medcab_task/src/data_layer/res/styles.dart';
 import 'package:medcab_task/src/ui_layer/screens/book_manpower/widgets/actions_row_widget.dart';
@@ -16,6 +17,8 @@ import 'package:medcab_task/src/ui_layer/screens/book_manpower/widgets/popular_c
 import 'package:medcab_task/src/ui_layer/screens/book_manpower/widgets/process_of_manpower_booking_widget.dart';
 import 'package:medcab_task/src/ui_layer/screens/book_manpower/widgets/top_rated_manpower_widget.dart';
 import 'package:medcab_task/src/ui_layer/widgets/app-text_fields.dart';
+import 'package:medcab_task/src/ui_layer/widgets/app_text_widgets.dart';
+import 'package:medcab_task/src/ui_layer/widgets/asset_image_widget.dart';
 
 class BookManpowerScreen extends StatefulWidget {
   const BookManpowerScreen({super.key});
@@ -107,7 +110,8 @@ class _BookManpowerScreenState extends State<BookManpowerScreen> {
           AppStyles.sbHeight15,
           const HorizontalDividerWidget(),
           AppStyles.sbHeight15,
-          HeadlineWidget(title: AppLocalizations.current.processOfManpowerBooking),
+          HeadlineWidget(
+              title: AppLocalizations.current.processOfManpowerBooking),
           AppStyles.sbHeight15,
           const ProcessOfManpowerBookingWidget(),
           AppStyles.sbHeight5,
@@ -116,6 +120,29 @@ class _BookManpowerScreenState extends State<BookManpowerScreen> {
           HeadlineWidget(title: AppLocalizations.current.faqs),
           AppStyles.sbHeight20,
           FrequentlyAskedQuestionsWidget(bloc: _faqsBloc),
+          AppStyles.sbHeight15,
+          const HorizontalDividerWidget(height: d_7),
+          AppStyles.sbHeight15,
+          Row(
+            children: [
+              Expanded(
+                child: HeadlineWidget(
+                    title:
+                        AppLocalizations.current.weEnsureCustomersLeaveTitle),
+              ),
+              const Padding(
+                padding: EdgeInsets.only(right: 20),
+                child: SvgImageWidget(
+                  name: AppImages.smileyEmoji,
+                  fit: BoxFit.contain,
+                  width: 30,
+                  height: 30,
+                ),
+              ),
+            ],
+          ),
+          AppStyles.sbHeight15,
+          _profileWidget(),
           AppStyles.sbHeight30,
         ],
       ),
@@ -134,6 +161,45 @@ class _BookManpowerScreenState extends State<BookManpowerScreen> {
         controller: _searchController,
         hint: AppLocalizations.current.searchManpower,
       ),
+    );
+  }
+
+  Widget _profileWidget() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Container(
+          height: AppStyles.getHeight(100),
+          width: AppStyles.getWidth(100),
+          decoration: AppStyles.circleBoxDecoration(
+            color: AppColors.lightPink,
+          ),
+          alignment: Alignment.center,
+          child: const Icon(Icons.person, size: 50),
+        ),
+        AppStyles.sbHeight3,
+        const PoppinsSemiBoldText(
+          text: "Saurabh Rajpoot",
+          fontSize: 15,
+          textAlign: TextAlign.center,
+          height: onePointFive,
+        ),
+        const PoppinsRegularText(
+          text: "Lucknow",
+          fontSize: 10,
+          textAlign: TextAlign.center,
+          height: onePointFive,
+        ),
+        Padding(
+          padding: AppStyles.pdH30V10,
+          child: PoppinsRegularText(
+            text: AppLocalizations.current.weEnsureCustomersLeaveDesc,
+            fontSize: 10,
+            textAlign: TextAlign.center,
+            height: onePointFive,
+          ),
+        ),
+      ],
     );
   }
 }
