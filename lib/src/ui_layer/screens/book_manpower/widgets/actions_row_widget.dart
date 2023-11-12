@@ -50,7 +50,7 @@ class ActionsRowWidget extends StatelessWidget {
       child: RichText(
         textAlign: TextAlign.left,
         text: TextSpan(
-          style: AppStyles.subtitleStyle(),
+          style: AppStyles.regularTextStyle(),
           children: [
             WidgetSpan(
               alignment: PlaceholderAlignment.middle,
@@ -58,7 +58,7 @@ class ActionsRowWidget extends StatelessWidget {
             ),
             TextSpan(
               text: "  $title",
-              style: AppStyles.subtitleStyle(),
+              style: AppStyles.regularTextStyle(),
             ),
           ],
         ),

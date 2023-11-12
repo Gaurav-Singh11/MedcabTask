@@ -10,7 +10,7 @@ class AppStyles {
   AppStyles._privateConstructor();
 
   /// Box Decorations
-  static BoxDecoration appBoxDecoration({Color color = Colors.transparent, Color? borderColor, double radius = d_10}) {
+  static BoxDecoration radiusBoxDecoration({Color color = Colors.transparent, Color? borderColor, double radius = d_10}) {
     return BoxDecoration(
       color: color,
       border: Border.all(
@@ -20,8 +20,15 @@ class AppStyles {
       borderRadius:  BorderRadius.all(Radius.circular(radius)),
     );
   }
+
+  static BoxDecoration circleBoxDecoration({Color color = Colors.transparent}) {
+    return BoxDecoration(
+      color: color,
+      shape: BoxShape.circle,
+    );
+  }
   /// Text styles
-  static subtitleStyle({
+  static regularTextStyle({
     Color color = AppColors.black,
     double fontSize = d_10,
     double height = onePointFive,

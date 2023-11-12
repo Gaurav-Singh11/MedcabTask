@@ -29,7 +29,7 @@ class ManPowerByCategoryWidget extends StatelessWidget {
 
   Widget _manpowerCategoryItemWidget() {
     return Container(
-      decoration: AppStyles.appBoxDecoration(
+      decoration: AppStyles.radiusBoxDecoration(
         color: AppColors.white,
         radius: d_10,
         borderColor: AppColors.lightGray2,
@@ -40,7 +40,7 @@ class ManPowerByCategoryWidget extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
-              decoration: AppStyles.appBoxDecoration(
+              decoration: AppStyles.radiusBoxDecoration(
                 color: AppColors.lightOrange.withOpacity(0.4),
                 radius: d_8,
                 borderColor: AppColors.lightGray2,

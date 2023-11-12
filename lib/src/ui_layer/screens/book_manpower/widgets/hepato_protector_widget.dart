@@ -21,7 +21,7 @@ class HepatoProtectorWidget extends StatelessWidget {
             return Padding(
               padding: AppStyles.pdH20,
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(10),
                 child: AssetImageWidget(
                   fit: BoxFit.cover,
                   name: AppImages.hepatoProtectors[index],

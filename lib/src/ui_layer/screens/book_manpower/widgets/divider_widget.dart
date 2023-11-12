@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:medcab_task/src/data_layer/res/colors.dart';
 
 class HorizontalDividerWidget extends StatelessWidget {
-  const HorizontalDividerWidget({super.key});
+  final double height;
+  const HorizontalDividerWidget({super.key, this.height = 5});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 5,
+      height: height,
       color: AppColors.fadeWhite,
     );
   }

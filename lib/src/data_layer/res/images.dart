@@ -1,7 +1,7 @@
 class AppImages {
   AppImages._privateConstructor();
 
-  // static const hepatoProtector = "assets/images/hepato_protector.png";
+  static const healthCardBenefit = "assets/images/health_card_benefit.svg";
 
   static const hepatoProtectors = [
     "assets/images/hepato_protector.png",
