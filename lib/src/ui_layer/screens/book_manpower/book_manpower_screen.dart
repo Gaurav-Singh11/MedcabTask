@@ -8,6 +8,7 @@ import 'package:medcab_task/src/data_layer/res/styles.dart';
 import 'package:medcab_task/src/ui_layer/screens/book_manpower/widgets/actions_row_widget.dart';
 import 'package:medcab_task/src/ui_layer/screens/book_manpower/widgets/app_bar_widget.dart';
 import 'package:medcab_task/src/ui_layer/screens/book_manpower/widgets/divider_widget.dart';
+import 'package:medcab_task/src/ui_layer/screens/book_manpower/widgets/frequently_asked_questions_widget.dart';
 import 'package:medcab_task/src/ui_layer/screens/book_manpower/widgets/headline_widget.dart';
 import 'package:medcab_task/src/ui_layer/screens/book_manpower/widgets/healthcard_benefit_widget.dart';
 import 'package:medcab_task/src/ui_layer/screens/book_manpower/widgets/hepato_protector_widget.dart';
@@ -31,6 +32,7 @@ class _BookManpowerScreenState extends State<BookManpowerScreen> {
   void initState() {
     super.initState();
     context.read<BookManpowerBloc>().updateHepatoProtectorPage(0);
+    context.read<BookManpowerBloc>().updateFaqsExpandedIndex(-1);
   }
 
   @override
@@ -99,9 +101,12 @@ class _BookManpowerScreenState extends State<BookManpowerScreen> {
           HeadlineWidget(title: AppLocalizations.current.processOfManpowerBooking),
           AppStyles.sbHeight15,
           const ProcessOfManpowerBookingWidget(),
-          AppStyles.sbHeight15,
-          AppStyles.sbHeight15,
-          AppStyles.sbHeight15,
+          AppStyles.sbHeight5,
+          const HorizontalDividerWidget(),
+          AppStyles.sbHeight20,
+          HeadlineWidget(title: AppLocalizations.current.faqs),
+          AppStyles.sbHeight20,
+          const FrequentlyAskedQuestionsWidget(),
           AppStyles.sbHeight30,
         ],
       ),
