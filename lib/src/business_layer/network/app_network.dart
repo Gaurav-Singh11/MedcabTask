@@ -98,7 +98,8 @@ class AppNetwork {
       var options = Options(method: requestType);
 
       /// Retrieve the user's access token from a [UserStateHiveHelper] asynchronously
-      String? accessToken /*= await UserStateHiveHelper.instance.getAccessToken()*/;
+      String?
+          accessToken/*= await UserStateHiveHelper.instance.getAccessToken()*/;
       if (headerIncluded != null && headerIncluded) {
         // LogHelper.logData("Authorization => $accessToken");
 
@@ -149,6 +150,13 @@ class AppNetwork {
 
       /// Handle different HTTP status codes
       switch (serverResponse.statusCode) {
+        case HttpResponseCode.ok:
+
+          /// Handle success response
+          return BaseApiResponseModel(
+            data: serverResponse,
+            exceptionType: ExceptionType.noException,
+          );
         case HttpResponseCode.internalServerError:
 
           /// Handle internal server error response
@@ -163,10 +171,9 @@ class AppNetwork {
           );
         default:
 
-          /// Handle other response cases (e.g., success)
+          /// Handle other response response getting but not as expected
           return BaseApiResponseModel(
-            data: serverResponse,
-            exceptionType: ExceptionType.noException,
+            exceptionType: ExceptionType.otherException,
           );
       }
     } on TimeoutException catch (error) {
@@ -294,6 +301,7 @@ class AppNetwork {
     try {
       /// Attempt to cancel all requests.
       _cancelAllRequests();
+
       /// TODO: Attempt to display the session expired dialog.
     } catch (e) {
       /// Handle any potential errors that may occur while displaying the dialog.

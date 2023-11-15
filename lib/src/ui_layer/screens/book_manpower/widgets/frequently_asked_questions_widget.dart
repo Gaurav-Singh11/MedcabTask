@@ -1,34 +1,65 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:medcab_task/src/business_layer/blocs/book_manpower/book_manpower_bloc.dart';
 import 'package:medcab_task/src/business_layer/blocs/book_manpower/book_manpower_state.dart';
+import 'package:medcab_task/src/business_layer/blocs/faqs/faqs_bloc.dart';
+import 'package:medcab_task/src/business_layer/blocs/faqs/faqs_state.dart';
+import 'package:medcab_task/src/business_layer/localization/app_localizations.dart';
+import 'package:medcab_task/src/data_layer/models/response_models/faqs_response_model.dart';
 import 'package:medcab_task/src/data_layer/res/colors.dart';
+import 'package:medcab_task/src/data_layer/res/font_families.dart';
 import 'package:medcab_task/src/data_layer/res/numbers.dart';
 import 'package:medcab_task/src/data_layer/res/styles.dart';
 import 'package:medcab_task/src/ui_layer/widgets/app_text_widgets.dart';
+import 'package:medcab_task/src/ui_layer/widgets/error_widgets.dart';
+import 'package:medcab_task/src/ui_layer/widgets/progress_helper.dart';
 
 class FrequentlyAskedQuestionsWidget extends StatelessWidget {
-  final  BookManpowerBloc? bloc;
+  final BookManpowerBloc? bloc;
+
   const FrequentlyAskedQuestionsWidget({super.key, this.bloc});
 
   @override
   Widget build(BuildContext context) {
     if (bloc == null) return const SizedBox.shrink();
-    return ListView.separated(
-      padding: AppStyles.screenHorizontalPadding,
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      itemBuilder: (context, index) {
-        return _faqs(bloc!.faqs[index], index);
+    return BlocBuilder<FaqsBloc, FaqsState>(
+      builder: (context, state) {
+        if (state is FetchingFaqs) {
+          return Padding(
+            padding: AppStyles.pd20,
+            child: const ProgressBar(),
+          );
+        } else if (state is FaqsFetched &&
+            state.faqsResponseModel.faqList != null) {
+          return ListView.separated(
+            padding: AppStyles.screenHorizontalPadding,
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemBuilder: (context, index) {
+              return _faqs(state.faqsResponseModel.faqList![index], index);
+            },
+            separatorBuilder: (context, index) {
+              return const Divider(height: 2, thickness: 1);
+            },
+            itemCount: state.faqsResponseModel.faqList!.length,
+          );
+        } else if (state is FaqsFetchingFailed) {
+          return ApiExceptionWidget(
+            error: state.failureMessage,
+            retry: () => context.read<FaqsBloc>().fetchFaqs(),
+          );
+        } else {
+          return ApiExceptionWidget(
+            error: AppLocalizations.current.somethingWentWrong,
+            retry: () => context.read<FaqsBloc>().fetchFaqs(),
+          );
+        }
       },
-      separatorBuilder: (context, index) {
-        return const Divider(height: 2, thickness: 1);
-      },
-      itemCount: bloc!.faqs.length,
     );
   }
 
-  Widget _faqs(String title, int index) {
+  Widget _faqs(FaqList faqList, int index) {
     return BlocBuilder<BookManpowerBloc, BookManpowerState>(
       bloc: bloc,
       builder: (context, state) {
@@ -43,10 +74,26 @@ class FrequentlyAskedQuestionsWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Expanded(
-                        child: PoppinsMediumText(
-                          text: title,
-                          fontSize: d_10,
-                        ),
+                        child: Html(
+                          data: faqList.header ?? "",
+                          style: {
+                            "#": Style(
+                              fontFamily: FontFamilies.poppins,
+                              color: AppColors.black,
+                              fontSize: FontSize(10),
+                              fontWeight: FontWeight.w600,
+                              whiteSpace: WhiteSpace.normal,
+                              lineHeight: LineHeight.number(1.2),
+                              padding: HtmlPaddings.zero,
+                              textAlign: TextAlign.start,
+                              margin: Margins.zero,
+                            ),
+                          },
+                        ), /*PoppinsMediumText(
+                            text: faqList.header ?? "",
+                            fontSize: d_10,
+                            height: onePointFive,
+                          ),*/
                       ),
                       Icon(
                         state.index == index
@@ -61,9 +108,9 @@ class FrequentlyAskedQuestionsWidget extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 5),
                   child: PoppinsRegularText(
-                    text:
-                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+                    text: faqList.description ?? "",
                     fontSize: 9,
+                    height: onePointFive,
                     color: AppColors.black.withOpacity(0.4),
                   ),
                 ),

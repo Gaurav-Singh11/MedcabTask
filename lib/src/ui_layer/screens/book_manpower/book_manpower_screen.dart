@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medcab_task/src/business_layer/blocs/book_manpower/book_manpower_bloc.dart';
+import 'package:medcab_task/src/business_layer/blocs/faqs/faqs_bloc.dart';
 import 'package:medcab_task/src/business_layer/localization/app_localizations.dart';
 import 'package:medcab_task/src/data_layer/res/colors.dart';
 import 'package:medcab_task/src/data_layer/res/images.dart';
@@ -42,6 +44,7 @@ class _BookManpowerScreenState extends State<BookManpowerScreen> {
     _healthCardBenefitBloc?.updateHealthCardBenefitPage(0);
     _hepatoProtectorBloc = BookManpowerBloc();
     _hepatoProtectorBloc?.updateHepatoProtectorPage(0);
+    context.read<FaqsBloc>().fetchFaqs();
   }
 
   @override

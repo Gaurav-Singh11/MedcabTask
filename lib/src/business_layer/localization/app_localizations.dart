@@ -39,6 +39,12 @@ class AppLocalizations {
 
   String get parseExceptionMessage => _localizedValues[locale.languageCode]?['parse_exception'] ?? "";
 
+  String get requestCancelled => _localizedValues[locale.languageCode]?['request_cancelled'] ?? "";
+
+  String get tryAgain => _localizedValues[locale.languageCode]?['try_again'] ?? "";
+
+  String get somethingWentWrong => _localizedValues[locale.languageCode]?['something_went_wrong'] ?? "";
+
   String get bookManpower => _localizedValues[locale.languageCode]?['book_manpower'] ?? "";
 
   String get searchNursesNearBy => _localizedValues[locale.languageCode]?['search_nurses_near_by'] ?? "";

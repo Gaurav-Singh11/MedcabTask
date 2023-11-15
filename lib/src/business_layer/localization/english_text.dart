@@ -10,7 +10,9 @@ class EnglishText {
     "socket_exception": "Please check your internet connection.",
     "parse_exception":
         "There is a problem while fetching data. Please contact support.",
-
+    "something_went_wrong": "Something went wrong.",
+    "request_cancelled": "Request cancelled.",
+    "try_again": "Try Again",
     "book_manpower": "Book Manpower",
     "search_nurses_near_by": "Search Nurses Near by",
     "search_manpower": "Search manpower etc...",

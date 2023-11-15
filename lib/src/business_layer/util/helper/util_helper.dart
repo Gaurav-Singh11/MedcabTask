@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:medcab_task/src/business_layer/localization/app_localizations.dart';
 import 'package:medcab_task/src/business_layer/network/exception_type.dart';
@@ -64,9 +63,9 @@ class UtilHelper {
       case ExceptionType.parseException:
         return AppLocalizations.current.parseExceptionMessage;
       case ExceptionType.otherException:
-        return ""; // TODO: Handle this case message.
+        return AppLocalizations.current.somethingWentWrong;
       case ExceptionType.cancelException:
-        return ""; // TODO: Handle this case message.
+        return AppLocalizations.current.requestCancelled;
       case ExceptionType.noException:
         return "";
     }
