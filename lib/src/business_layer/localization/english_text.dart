@@ -2,7 +2,7 @@ class EnglishText {
   EnglishText._privateConstructor();
 
   static const text = {
-    "title": "GameTV",
+    "title": "MedCab Task",
     "api_exception":
         "We are working on your request. Please try after sometime.",
     "timeout_exception":
